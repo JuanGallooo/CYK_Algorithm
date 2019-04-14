@@ -9,7 +9,7 @@ public class mainTest {
 
 	public static void main(String[] args) {
 		try {
-			File file = new File ("./docs/Problem2.txt");
+			File file = new File ("./docs/Problem.txt");
 	        FileReader fr = new FileReader (file);
 	        BufferedReader sr = new BufferedReader(fr);
 			String message = sr.readLine();
