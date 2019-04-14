@@ -1,0 +1,8 @@
+4
+S,A,B,C
+baaba
+BA AC
+CC b
+AB a
+BA a
+ 
