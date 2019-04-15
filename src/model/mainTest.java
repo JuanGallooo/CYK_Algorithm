@@ -9,7 +9,7 @@ public class mainTest {
 
 	public static void main(String[] args) {
 		try {
-			File file = new File ("./docs/Problem.txt");
+			File file = new File ("./docs/Problem2.txt");
 	        FileReader fr = new FileReader (file);
 	        BufferedReader sr = new BufferedReader(fr);
 			String message = sr.readLine();
@@ -29,9 +29,8 @@ public class mainTest {
 					productions.add(produ);
 					message= sr.readLine();
 			}
-			
 			AlgorithmCYK model= new AlgorithmCYK(variables, productions, w);
-			model.isProduction();
+			boolean n = model.isProduction();
 //			4
 //			s,a,b,c
 //			bbab
