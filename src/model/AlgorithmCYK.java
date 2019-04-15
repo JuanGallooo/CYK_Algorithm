@@ -47,11 +47,6 @@ public class AlgorithmCYK {
 					printTable(table);
 				}
 				else {
-					// j==1 (j=2 real table)
-					
-					// Xik X i+k j-k
-					// 1<=k<=1
-					
 					int k=1;
 					for (int i = 0; i < table.length-1; i++) {
 					  String concatenate= concatenate(table[i][0],table[i+k][0]);
@@ -71,7 +66,16 @@ public class AlgorithmCYK {
 				}
 			}
 			else {
-				// j=> 2 (j>=3 real table)
+//		      int rows =  table.length - (j+1);
+//		      for (int i = 0; i < rows; i++) {
+//		    	  ArrayList<String> allTerms = new ArrayList<String>();
+//				for (int k = 0; k < j; k++) {
+//					String concatenate = concatenate(table[i][k], table[i+k][j-k]);
+//					allTerms.add(concatenate);
+//				}
+//				
+//			  }
+		      
 				
 			}
 		}
@@ -118,22 +122,18 @@ public class AlgorithmCYK {
 	public String concatenate(String a, String b) {
 		System.out.println(a +" "+ b);
 		String result= "";
-		if(a.equals(b))result=a;
-		else {
 			String[] rA= a.split(" ");
 			String[] rB= b.split(" ");
 			
 			for (int i = 0; i < rA.length; i++) {
 				for (int j = 0; j < rB.length; j++) {
-					if(rA[i].equals(rB[j])) result+=rA[i]+" ";
-					else {
 						result+=rA[i]+rB[j]+" ";
-					}
 				}
 			}
-		}
 		return result;
 	}
+	
+
 
 	public String[] getVariables() {
 		return variables;
