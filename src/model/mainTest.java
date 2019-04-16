@@ -31,13 +31,6 @@ public class mainTest {
 			}
 			AlgorithmCYK model= new AlgorithmCYK(variables, productions, w);
 			boolean n = model.isProduction();
-//			4
-//			s,a,b,c
-//			bbab
-//			BA AC
-//			CC b
-//			AB a
-//			BA a
 			sr.close();
 		} catch (Exception e) {
 			e.printStackTrace();

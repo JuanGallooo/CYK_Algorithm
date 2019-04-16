@@ -1,6 +1,5 @@
-4
-S,A,B,C
 baaba
+S,A,B,C
 BA AC
 CC b
 AB a
