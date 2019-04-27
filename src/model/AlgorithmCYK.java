@@ -40,16 +40,23 @@ public class AlgorithmCYK {
 	public boolean isProduction() {
 		boolean production =false;
 		//This indicates the table that we need to determinate if w E l(g) 
+		//This table in every space the production it is separated by spaces
+		
 		
 		String[][] table= new String[w.length() + 1][w.length()+ 1];
+		
+		//and initialize the result table in ""
 		for (int i = 0; i < table.length; i++) {
 			for (int j = 0; j < table.length; j++) {
 				table[i][j]="";
 			}
 		}
-		// This table in every space the production it is separated by spaces
+		
+		//this iteration fills the table from the algorithm taking into account the iterations of j and k
 		
 		for (int j = 1; j < table.length; j++) {
+			
+			//first you look at the first iteration and the second 
 			if( j== 1 || j==2) {
 				if(j==1) {
 					for (int i = 0; i < table.length-1; i++) {
@@ -60,6 +67,7 @@ public class AlgorithmCYK {
 					//printTable(table);
 				}
 				else {
+					
 					int k=1;
 					for (int i = 1; i < table.length-1; i++) {
 					  String concatenate= concatenate(table[i][1],table[i+k][1]);
@@ -69,6 +77,8 @@ public class AlgorithmCYK {
 					  for (int l = 0; l < allTerms.length; l++) {
 						  result+=getWhoProduce(allTerms[l]);
 					  }
+					  //This removes the duplicated elements, this happens when in the unions 
+					  //there are several produced by a variable
 					  result= removeDuplicateElements(result.split(" "));
 					  table[i][j]= result;
 					}
@@ -77,11 +87,12 @@ public class AlgorithmCYK {
 					//printTable(table);
 				}
 			}
+			//this part looks when you want to fill the table from j == 2 to the desired size
 			else {
 		      int rows =  table.length - j;
 		      rows++;
 		      for (int i = 1; i < rows; i++) {
-		    	  ArrayList<String> allTerms = new ArrayList<String>();
+		    	ArrayList<String> allTerms = new ArrayList<String>();
 				for (int k = 1; k < j; k++) {
 					String concatenate = concatenate(table[i][k], table[i+k][j-k]);
 					allTerms.add(concatenate);
@@ -102,11 +113,17 @@ public class AlgorithmCYK {
 			}
 			
 		}
+		//This organized the table 
 		String [][] organized = organizeTable(table);
+		//determinate the of the return to say if  w is determinated by E l(g)
+		
 		production = auxIsProduction(organized[0][organized.length-1],variables[0]);
+		
 		//System.out.println("END\n");
 		//printTable(organized);
 		
+		
+		//table to print organized to put in the frame 
 		tableToPrint(organized);
 		
 		return production;
